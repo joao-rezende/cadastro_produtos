@@ -31,6 +31,9 @@ public class ProdutoController {
 
     @FXML
     public void initialize() {
+        colCodBarras.setCellValueFactory(new PropertyValueFactory<>("codBarras"));
+        colDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+
         produtos = FXCollections.observableArrayList();
 
         produtos.add(new Produto(1, "Biscoito Recheado Passatempo", "Nestlé", "7891000051351"));
@@ -39,8 +42,40 @@ public class ProdutoController {
 
         tbProdutos.setItems(produtos);
 
-        colCodBarras.setCellValueFactory(new PropertyValueFactory<>("codBarras"));
-        colDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tbProdutos.getSelectionModel().selectedItemProperty()
+                .addListener((valorObservavel, produtoAnterior, produtoSelecionado) -> {
+                    if (produtoSelecionado != null) {
+                        exibirProduto(produtoSelecionado);
+                    }
+                });
+    }
+
+    private void exibirProduto(Produto produto) {
+        txtDescricao.setText(produto.getDescricao());
+        txtMarca.setText(produto.getMarca());
+        txtCodBarras.setText(produto.getCodBarras());
+    }
+
+    @FXML
+    private void handleExcluirProduto() {
+        int indiceSelecionado = tbProdutos.getSelectionModel().getSelectedIndex();
+        produtos.remove(indiceSelecionado);
+    }
+
+    @FXML
+    private void handleAlterarProduto() {
+        int indiceSelecionado = tbProdutos.getSelectionModel().getSelectedIndex();
+        Produto produto = produtos.get(indiceSelecionado);
+
+        produto.setDescricao(txtDescricao.getText());
+        produto.setMarca(txtMarca.getText());
+        produto.setCodBarras(txtCodBarras.getText());
+
+        produtos.set(indiceSelecionado, produto);
+
+        txtDescricao.setText("");
+        txtMarca.setText("");
+        txtCodBarras.setText("");
     }
 
     @FXML

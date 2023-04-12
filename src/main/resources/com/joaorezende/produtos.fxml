@@ -22,10 +22,10 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tbProdutos" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="444.0" text="Descrição" />
-          <TableColumn minWidth="0.0" prefWidth="387.0" text="Marca" />
+          <TableColumn fx:id="colCodBarras" minWidth="0.0" prefWidth="387.0" text="Código de Barras" />
+          <TableColumn fx:id="colDescricao" prefWidth="444.0" text="Descrição" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -38,6 +38,16 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <Button layoutX="193.0" layoutY="16.0" mnemonicParsing="false" text="Excluir" onAction="#handleExcluirProduto" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="15.0" />
+            <Button layoutX="261.0" layoutY="16.0" mnemonicParsing="false" text="Alterar" onAction="#handleAlterarProduto" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0" />
+            <Button fx:id="btnAdicionar" layoutX="372.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleAdicionarProduto" text="Adicionar" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+            <Pane layoutX="16.0" layoutY="40.0" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #DDDDDD;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
+            <Label layoutX="15.0" layoutY="75.0" text="Descrição:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="65.0" />
+            <Label layoutX="14.0" layoutY="133.0" text="Marca:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="94.0" />
+            <Label layoutX="14.0" layoutY="154.0" text="Código de Barras:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="123.0" />
+            <TextField fx:id="txtDescricao" layoutX="87.0" layoutY="57.0" promptText="Informe a descrição" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="61.0" />
+            <TextField fx:id="txtMarca" layoutX="87.0" layoutY="98.0" promptText="Informe a marca" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="90.0" />
+            <TextField fx:id="txtCodBarras" layoutX="168.0" layoutY="119.0" promptText="Informe o código de barras" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="119.0" />
             <TitledPane animated="false" layoutX="15.0" layoutY="423.0" prefHeight="370.0" prefWidth="418.0" text="Embalagens" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -68,16 +78,6 @@
                   </AnchorPane>
                </content>
             </TitledPane>
-            <Pane layoutX="16.0" layoutY="40.0" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: #DDDDDD;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
-            <Label layoutX="15.0" layoutY="75.0" text="Descrição:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="65.0" />
-            <Label layoutX="14.0" layoutY="133.0" text="Marca:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="94.0" />
-            <Label layoutX="14.0" layoutY="154.0" text="Código de Barras:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="123.0" />
-            <Button fx:id="btnAdicionar" layoutX="372.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleAdicionar" text="Adicionar" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
-            <Button layoutX="261.0" layoutY="16.0" mnemonicParsing="false" text="Alterar" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="15.0" />
-            <Button layoutX="193.0" layoutY="16.0" mnemonicParsing="false" text="Excluir" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="15.0" />
-            <TextField fx:id="txtDescricao" layoutX="87.0" layoutY="57.0" promptText="Informe a descrição" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="61.0" />
-            <TextField fx:id="txtMarca" layoutX="87.0" layoutY="98.0" promptText="Informe a marca" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="90.0" />
-            <TextField fx:id="txtCodBarras" layoutX="168.0" layoutY="119.0" promptText="Informe o código de barras" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="119.0" />
          </children>
       </AnchorPane>
    </children>
